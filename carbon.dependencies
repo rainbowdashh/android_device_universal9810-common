@@ -1,0 +1,8 @@
+[
+    {
+        "remote" : "carbon",
+        "repository": "msdx321/android_kernel_samsung_starlte",
+        "target_path": "kernel/samsung/universal9810",
+        "revision" : "cr-6.1"
+    }
+]
