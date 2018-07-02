@@ -8,7 +8,6 @@
     <integer name="config_deviceLightCapabilities">11</integer>
     <integer name="config_deviceHardwareKeys">73</integer>
     <integer name="config_deviceHardwareWakeKeys">73</integer>
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
     <string-array name="config_blockPackagesSensorDrain">
         <item>com.whatsapp</item>
         <item>com.gbwhatsapp</item>
@@ -23,9 +22,8 @@
     </string-array>
     <bool name="config_multiColorNotificationLed">true</bool>
     <bool name="config_intrusiveBatteryLed">true</bool>
-    <bool name="config_multiColorBatteryLed">false</bool>
+    <bool name="config_multiColorBatteryLed">true</bool>
     <bool name="config_FastChargingLedSupported">true</bool>
     <bool name="config_enableSmartPixels">true</bool>
-    <!-- Threshold in micro watts above which a charger is rated as "fast"; 2.0A @ 5V  -->
-<integer name="config_chargingFastThreshold">2000000</integer>
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
 </resources>
