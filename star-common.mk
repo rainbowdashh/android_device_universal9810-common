@@ -1,17 +1,9 @@
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
+# Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-ifneq ($(findstring lineage, $(TARGET_PRODUCT)),)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
-endif
-
-ifneq ($(findstring carbon, $(TARGET_PRODUCT)),)
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-carbon
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carbon.maintainer="msdx321"
-endif
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \

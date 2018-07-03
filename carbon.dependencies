@@ -1,8 +1,0 @@
-[
-    {
-        "remote" : "carbon",
-        "repository": "CarbonROM/android_kernel_samsung_starlte",
-        "target_path": "kernel/samsung/universal9810",
-        "revision" : "cr-6.1"
-    }
-]
