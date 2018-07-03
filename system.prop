@@ -13,3 +13,6 @@ config.disable_consumerir=true
 
 # Enable ADB authentication
 ro.adb.secure=1
+
+# Camera
+persist.camera.HAL3.enabled=1
