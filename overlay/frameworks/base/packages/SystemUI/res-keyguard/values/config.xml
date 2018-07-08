@@ -5,7 +5,7 @@
 -->
 <resources>
     <!-- Threshold in micro amperes below which a charger is rated as "slow" -->
-    <integer name="config_chargingSlowlyThreshold">1000000</integer>
+    <integer name="config_chargingSlowlyThreshold">0</integer>
     <!-- Threshold in micro amperes above which a charger is rated as "fast" -->
     <integer name="config_chargingFastThreshold">1500000</integer>
 </resources>

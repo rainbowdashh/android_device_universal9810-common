@@ -1,3 +1,5 @@
+
+
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -7,7 +9,7 @@ COMMON_PATH := device/samsung/star-common
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Enable real time lockscreen charging current values
-BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+#BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Platform
 BOARD_VENDOR := samsung
@@ -131,8 +133,9 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 # Lineage hardware
 ifneq ($(findstring lineage, $(TARGET_PRODUCT)),)
 BOARD_HARDWARE_CLASS := \
-    hardware/samsung/lineagehw
+   hardware/samsung/lineagehw 
 endif
+BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
