@@ -4,6 +4,9 @@ ro.debug_level=0x4f4c
 
 # RIL
 rild.libargs=-d /dev/umts_ipc0
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
+ro.ril.def.preferred.network=9
 
 # read DS/SS property
 import /efs/factory.prop
@@ -19,3 +22,4 @@ persist.camera.HAL3.enabled=1
 
 # Power 
 sys.power.profiles=true
+

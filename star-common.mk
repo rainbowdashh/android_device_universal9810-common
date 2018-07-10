@@ -1,3 +1,4 @@
+
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -43,7 +44,7 @@ PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2960
+TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
 # Init
