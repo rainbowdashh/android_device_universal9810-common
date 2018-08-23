@@ -5,8 +5,3 @@
 lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
 
-# Camera
-lib/libexynoscamera3.so
-lib64/libexynoscamera3.so
-firmware/fimc_is_lib.bin
-firmware/fimc_is_rta_2l3_3h1.bin
