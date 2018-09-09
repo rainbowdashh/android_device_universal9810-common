@@ -143,7 +143,7 @@
     <bool name="config_cellBroadcastAppLinks">true</bool>
     <string name="config_radio_access_family">GSM|WCDMA|LTE</string>
     <bool name="config_animateScreenLights">true</bool>
-    <integer name="config_fingerprintMaxTemplatesPerUser">4</integer>
+    <integer name="config_fingerprintMaxTemplatesPerUser">10</integer>
     <integer-array name="config_longPressVibePattern">
         <item>7</item>
     </integer-array>
@@ -160,4 +160,6 @@
     <string name="db_default_sync_mode" translatable="false">OFF</string>
     <string name="db_wal_sync_mode" translatable="false">OFF</string>
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+    <integer name="config_deviceHardwareKeys">73</integer>
+    <integer name="config_deviceHardwareWakeKeys">73</integer>
 </resources>
