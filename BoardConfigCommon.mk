@@ -84,8 +84,8 @@ TW_INCLUDE_FBE := true
 endif
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_star
-TARGET_RECOVERY_DEVICE_MODULES := libinit_star
+#TARGET_INIT_VENDOR_LIB := libinit_star
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_star
 
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
