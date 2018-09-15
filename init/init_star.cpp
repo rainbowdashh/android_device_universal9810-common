@@ -1,95 +1,75 @@
 /*
-   Copyright (C) 2018 The LineageOS Project
-   SPDX-License-Identifier: Apache-2.0
+   Copyright (c) 2017-2018, The LineageOS Project. All rights reserved.
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are
+   met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+   THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+   WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+   BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+   BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+   OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+   IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <fcntl.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-
-#include <android-base/properties.h>
-#include <android-base/strings.h>
-
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
+#include <cutils/properties.h>
+#include <android-base/logging.h>
+#include "log.h"
+#include "util.h"
 
-using android::base::GetProperty;
-using android::init::property_set;
+#include "init_apq8084.h"
 
-static void property_override(char const prop[], char const value[])
+const char *fingerprint[3] = {
+  "samsung/star2ltexx/star2lte:8.0.0/R16NW/G965FXXU2BRGA:user/release-keys"
+};
+
+const char *description[3] = {
+  "star2ltexx-user 8.0.0 R16NW G965FXXU2BRGA release-keys"
+};
+
+const char *model[3] = {
+  "SM-G965F",
+
+};
+
+const char *device[3] =  {
+  "star2ltexx"
+
+};
+
+void init_target_properties()
 {
-  prop_info *pi;
+    property_override("ro.build.description", description[idx]);
+    property_override_dual("ro.build.fingerprint",
+			   "ro.vendor.build.fingerprint",
+			   fingerprint[idx]);
+    property_override_dual("ro.product.model",
+			   "ro.vendor.product.model",
+			   model[idx]);
+    property_override_dual("ro.product.device",
+			   "ro.vendor.product.device",
+			   device[idx]);
 
-  pi = (prop_info *)__system_property_find(prop);
-  if (pi)
-    __system_property_update(pi, value, strlen(value));
-  else
-    __system_property_add(prop, strlen(prop), value, strlen(value));
-}
-
-static void apply_vendor_fingerprint()
-{
-  std::string fingerprint = GetProperty("ro.vendor.build.fingerprint", "");
-
-  if (fingerprint.empty())
-  {
-    return;
-  }
-
-  char *dup = strdup(fingerprint.c_str());
-
-  char *ch1 = strtok(dup, ":");
-  char *ch2 = strtok(NULL, ":");
-  char *ch3 = strtok(NULL, ":");
-
-  free(dup);
-
-  char *oem = strtok(ch1, "/");
-  char *name = strtok(NULL, "/");
-  char *device = strtok(NULL, "/");
-
-  char *ver = strtok(ch2, "/");
-  char *id = strtok(NULL, "/");
-  char *pda = strtok(NULL, "/");
-
-  char *type = strtok(ch3, "/");
-  char *key = strtok(NULL, "/");
-
-  char *description;
-  asprintf(&description, "%s-%s %s %s %s %s", name, type, ver, id, pda, key);
-
-  property_override("ro.build.description", description);
-  property_override("ro.build.fingerprint", fingerprint.c_str());
-  property_override("ro.product.name", name);
-  property_override("ro.product.device", device);
-  property_override("ro.build.PDA", pda);
-}
-
-static void apply_device_model()
-{
-  std::string model = GetProperty("ro.boot.em.model", "");
-
-  if (model.empty())
-  {
-    return;
-  }
-
-  property_override("ro.product.model", model.c_str());
-}
-
-static void init_target_properties()
-{
-  apply_vendor_fingerprint();
-  apply_device_model();
-}
-
-void vendor_load_properties()
-{
-  init_target_properties();
+    property_get("ro.product.device", prop_value, "");
+    std::string device = prop_value;
+    LOG(INFO) << "Found bootloader id %s setting build properties for %s device\n", bootloader.c_str(), device.c_str();
 }
