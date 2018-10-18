@@ -1,7 +1,7 @@
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
-COMMON_PATH := device/samsung/star-common
+COMMON_PATH := device/samsung/universal9810-common
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -138,4 +138,4 @@ BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # Inherit from the proprietary version
--include vendor/samsung/star-common/BoardConfigVendor.mk
+-include vendor/samsung/universal9810-common/BoardConfigVendor.mk
