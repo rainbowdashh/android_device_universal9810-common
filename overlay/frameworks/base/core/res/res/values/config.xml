@@ -160,4 +160,6 @@
     <string name="db_default_sync_mode" translatable="false">OFF</string>
     <string name="db_wal_sync_mode" translatable="false">OFF</string>
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+    <integer name="config_deviceHardwareKeys">73</integer>
+    <integer name="config_deviceHardwareWakeKeys">73</integer>
 </resources>
