@@ -74,6 +74,7 @@ PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
     NfcNci \
+    SecureElement \
     Tag
 
 # Power
