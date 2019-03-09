@@ -119,5 +119,8 @@ JAVA_SOURCE_OVERLAYS := \
     org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java
 endif
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
+
 # Inherit from the proprietary version
 -include vendor/samsung/universal9810-common/BoardConfigVendor.mk
