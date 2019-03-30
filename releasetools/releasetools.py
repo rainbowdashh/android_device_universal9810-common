@@ -1,7 +1,7 @@
 def FullOTA_Assertions(info):
     info.script.AppendExtra('ifelse(is_mounted("/vendor"), unmount("/vendor"));');
     info.script.AppendExtra('mount("ext4", "EMMC", "/dev/block/platform/11120000.ufs/by-name/VENDOR", "/vendor");');
-    info.script.AppendExtra('ifelse(file_getprop("/vendor/build.prop","ro.vendor.build.date.utc") != "1550667210",');
+    info.script.AppendExtra('ifelse(file_getprop("/vendor/build.prop","ro.vendor.build.date.utc") != "1552371054",');
     info.script.AppendExtra('unmount("/vendor");');
     info.script.AppendExtra('ui_print(" ");');
     info.script.AppendExtra('ui_print("=============================================");');
@@ -9,7 +9,7 @@ def FullOTA_Assertions(info):
     info.script.AppendExtra('ui_print("                   ERROR:                    ");');
     info.script.AppendExtra('ui_print("          Vendor image on the device         ");');
     info.script.AppendExtra('ui_print("              is NOT compatible              ");');
-    info.script.AppendExtra('ui_print("          Expected version: XXU2CSB9         ");');
+    info.script.AppendExtra('ui_print("          Expected version: XXU2CSC8        ");');
     info.script.AppendExtra('ui_print("=============================================");');
     info.script.AppendExtra('ui_print("============NO CHANGE HAS BEEN MADE==========");');
     info.script.AppendExtra('abort(" "););');
